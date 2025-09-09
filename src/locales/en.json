@@ -1,0 +1,11 @@
+{
+  "dashboard": "Dashboard",
+  "users": "Users",
+  "users_table": "Users Table",
+  "settings": "Settings",
+  "logout": "Logout",
+
+  "site": {
+    "welcome": "welcome"
+  }
+}
