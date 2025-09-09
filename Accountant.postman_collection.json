@@ -1,0 +1,1428 @@
+{
+	"info": {
+		"_postman_id": "3eef2a67-3ded-4727-9fef-d22c242a02ee",
+		"name": "Accountant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32967832",
+		"_collection_link": "https://grey-water-736386.postman.co/workspace/Accountant~31084b53-98cf-477c-bed1-36cfd0a972a7/collection/32967832-3eef2a67-3ded-4727-9fef-d22c242a02ee?action=share&source=collection_link&creator=32967832"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_name",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/admin/login",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmE3MGIxNmQ2MjI0M2RlZWE5MzBiZTBiNGQ1Njc1NjQ0NWQ1ODU3MWIyYmFhZWI4NjAzNDBiMjIwNjY3YWVhYWRlOTA3ODYxZTNlZDVjYzciLCJpYXQiOjE3NTcyNjQ1NTQuOTEyNDAxLCJuYmYiOjE3NTcyNjQ1NTQuOTEyNDA0LCJleHAiOjE3NTgxMjg1NTQuOTAwMDM3LCJzdWIiOiIxIiwic2NvcGVzIjpbIkFkbWluIl19.MZTA0Xbt07Y8psKodwxEhr3NvELU99Zhjrg-FjLtNl0gBwjAHvGPphfPlpTUpjvyIkThQmic_xTea-pOu355EU-3uMuonD1SxgTXqk2ox060NNdWczgI0QnFjr7hRWOo_Zes009Kwa-FcaoEiXU6vLe4sVVTfPuadrgIBeAjARBAEENUyoli2iDZBLQvucRlGu13yyyKAF575hOdUpgpKobfZUDYaEzTLzxoqn8lSvCEgI2-Ki0fVgSG8KZvTOclMc096FxjQuQMWzK6o6A3DBA7fCwnzTqlY-VGz0ws1W9wrD9Cr9qbXHAwLPVeszasm-EMZkPSVrHs4lXskApK-21YK5jEiAn0ZfDyNo0i-v4wwXcHu9f65A_Ua09dj4x1Xuz4s8OuPqGSwR7-TRjh9in0ed2q-8Yrj_e3-Yx7qK2ktVLWczrkCk-SrSv_e7hsBXzRvhAglXplsvG1VHIlhhcjKJ5h7hlxJKOf_X-WpBrojfIGOq9lCpguqLZY20SYDgSTlRGsZxvPHiqM8OqxDG13DTDQvXc4ycL9C1ohbN_VSYxhdpd-1G7OMp4lpR-5hwqvqT11p-VzGMy1xdDdZUwbAYKssY3db-n_dV2C1NeQTCikM-800MfMiLXwOde4MkiWy4p2Dp5hKu7kP47fjRXetYLR5B4_ayTVb92u0SI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/api/admin/logout",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Change Account Status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzY3YTFmNzJhNTc1NTkyOWRlMzA4MDRhNTAzNzIwN2E1OGQ5NGE3MjQyYTkyZWU0OTMyNzFlNDU0ODkyNzMzMTZlYjlhMWU0OTY3Mzk5ZWUiLCJpYXQiOjE3NTczMjc1NjkuOTgxMzQsIm5iZiI6MTc1NzMyNzU2OS45ODEzNDEsImV4cCI6MTc1ODE5MTU2OS45Nzc2NTMsInN1YiI6IjEiLCJzY29wZXMiOlsiQWRtaW4iXX0.CcJAwmVK62cTwK13V1zfvTBqS3PyN6jHuNpWDciXbOVs_Z1Bj74xNFX7gbWsslvQcrR7caKWVCH-8fUzjZu9QgTTYnkVgAZzypM8Q_5OVjTjR-PVpnfMa0SIR-ZmhDPfi7elPLks_86wi6v8835SNj_PbIYNVt-3mGowQlJIE7_WnDkO0qIG716ajYWfzCQXnQ6cZxoymsVULuL4eXJ4T2CYslnp5r-Dg-CPgVQFdbsfIMYnpDi7Qg9Qk25L-L0Jc7jZIr_9oE7IEIy8GpZJKQbczPKHTXjvouHbXn_thJQGapgT6i0QyPTwrKD5ELJAgocL-B45Ew0TPTeDyJpeSGyLqyvdjeugz_VURwdI0jw5bSn52ne5jPOJZN-G0Rza4zdi_uZIK_ReEDgkLLnINteyC8RVZVKwIrKuHPSnUEVwHwOVbyrBZ7tgsRk6QecsFNportiqqNGjFEghJ88n8Y-w5VB-oIjrAufaM20sjQfWsZVW254UUFq-FahLFUTD0BT_v5LmDSkbQYtJauos-1y5L4yofRbElFGt9wHeY8PvbMN4W0OmlWp5WSwFIxTMvC6CvGI8j73NTyPFMuNgvkS-zd8RDgalK6h7xVD_CIc2bVclIxU5ey4OaOQuSUxnPm6jibtdLHPLy1KpvvN6-oolGZd3Uq9GKvlkjUm5PTs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "accepted",
+											"description": "accepted , rejected",
+											"type": "text"
+										},
+										{
+											"key": "reason",
+											"value": "no action ",
+											"description": "reason required when status is rejected",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/admin/change_account_status",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"change_account_status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Toggle Block User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2JkNTE4ZmNkYTU2YzQ3M2YxNTJiMmI5MmNlMTU2MTViNzQyYjM2YjcyZTI2NDEzZTA1MDcwZjgwOGU5ZWQ4ZGFkMjlhZTMwZDU5YjYxNzkiLCJpYXQiOjE3NTcyNjcyNzMuNjYyNzA0LCJuYmYiOjE3NTcyNjcyNzMuNjYyNzA2LCJleHAiOjE3NTgxMzEyNzMuNjUxODA4LCJzdWIiOiIxIiwic2NvcGVzIjpbIkFkbWluIl19.njKCBJu2bgA6bthqqI3rFKi_n-r8Dh8Ekw3rmz9NWnfcRRKcUxai9SCrXcybbCX4JTLWpdhS5lRObNyLeqFo1utQ__B93JtfReiKSP_Gsan0_mpeSw7YHT9Gs1QOmiEvsMnqBfN2xpheZ7DRxoRThP3YiFywTxBN-j4HaK8Y9A88cT73q49ziP3LEMgnrQFtE8pKYBYbeYFpsBJkTekAxlafMWA7rCMFzGyo0ftGmxNjj3VooCvapdxqB9_ypM9qzH2_wdxElM9TKyiw5XyYqLcMA6zJ3rCHPDgxBVkoI9gKTPmPfcV1N13PGZ_HUZvMwDM9o8gUY9YkPJ3vM-Gd71HmjOvWPVE7EiyYHhMqtvVaF97Y0lgPPLzm1pEwE2KU-mHimeXa2LRPQa8Iet4EKmYlHrYNMuPhwA-DDM3vFv2kZExSc09VJtmMoDcU6N7glT2XyWcPLf5TkJsE2AVfW0LrdMWPU31cvI6-Rv51FR6wfTd_dIB2MyrF9wzZn2v9Cj8acOLHsZYjBZGbRN7FCp7UkxMmzq_Q3hIAO6J3JoEiMkrHLsLZiRckvsmgK-zUUclB7QCtx-Tf21w_x9z9OFtKVN1ARZJAG6ei1Ucu1HgXdD_jhddTbXD9VbwQTCvOjWw54LZWQDZ-yx_Re5DjqWmTGgvPtQ83Ht3pZr1OYjM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/admin/toggle_block_user",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"toggle_block_user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmMwOWI2NGE5ZDQ3MjAzOWJmYjkwZDg2ZDM4ZWI4ZGQ1ODVhMWZmMzQwNDA3ZjEwOGM5NTg4NGNkNjBlYzZjOWY1MmZiYjk0NDNlZDFlMTEiLCJpYXQiOjE3NTcxNjc5MzMuNzY3MTc3LCJuYmYiOjE3NTcxNjc5MzMuNzY3MTgxLCJleHAiOjE3NTgwMzE5MzMuNzU3NDQxLCJzdWIiOiIxIiwic2NvcGVzIjpbIkFkbWluIl19.qksrUFg7Dh0VGSzl28qz89kWht8CqwtZOh59vbdEMXsNc8DSuTw-_AUU7oz2-4p0zRJyUSa0fHniqKVLkQ_h7x7H0mLpEGp9XZe6ZMGLPJ8dBNW10wwWb-Zc_PPUhYfwjVU76Y2UCx4QhPZ1RjGEzMRPJHWG_A3gkKIyM_tklol7bXt0YTq4UDO19EA3hQpSJAxi-0UuLU78SzyNyFnp1MYVdJ4d2kbhWJ6IQJwkJSU6F1eMYwXtAWgVneU9VsVi79IQ75GMDmD_M1p5jDZV2C4ro5DHSAut4rMDl4eJNoT_VCgR1IYK_R2hL4Tqlbdz8rsVxq0JaooIGxiyli4k1MZR8So7sVx0uO9UYBGtX6fGthELr6JJM8ujJObjeMuXPRaBr6fyzuL0yOP2BKAsPoifwyx4L99C6HTXlm4vj7eb1EJX0ia32bVUHD90PlkEz8Dsh4SvMIOnVhkcbYsBPnFRQ8DChzf5XCcoRT3a8Uml61BFs_voCNfVUHQPvIUszz9EjVgxtax2SKs6-xqfeBVgPMVwxY5AJe7TYoH5o4zC2ty7VEAzvibADtmqe5b0vRLcLEe2ZVy65ntuv-nICv4gV46kUewhUgThvYxdGOd-3aUtFQW41eAYEj76ZWD8jtvfprami0EXO7iYH8Ix6DJJzM_2yhhW4LbQ0BB6Onk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/api/admin/delete_user/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"delete_user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzY3YTFmNzJhNTc1NTkyOWRlMzA4MDRhNTAzNzIwN2E1OGQ5NGE3MjQyYTkyZWU0OTMyNzFlNDU0ODkyNzMzMTZlYjlhMWU0OTY3Mzk5ZWUiLCJpYXQiOjE3NTczMjc1NjkuOTgxMzQsIm5iZiI6MTc1NzMyNzU2OS45ODEzNDEsImV4cCI6MTc1ODE5MTU2OS45Nzc2NTMsInN1YiI6IjEiLCJzY29wZXMiOlsiQWRtaW4iXX0.CcJAwmVK62cTwK13V1zfvTBqS3PyN6jHuNpWDciXbOVs_Z1Bj74xNFX7gbWsslvQcrR7caKWVCH-8fUzjZu9QgTTYnkVgAZzypM8Q_5OVjTjR-PVpnfMa0SIR-ZmhDPfi7elPLks_86wi6v8835SNj_PbIYNVt-3mGowQlJIE7_WnDkO0qIG716ajYWfzCQXnQ6cZxoymsVULuL4eXJ4T2CYslnp5r-Dg-CPgVQFdbsfIMYnpDi7Qg9Qk25L-L0Jc7jZIr_9oE7IEIy8GpZJKQbczPKHTXjvouHbXn_thJQGapgT6i0QyPTwrKD5ELJAgocL-B45Ew0TPTeDyJpeSGyLqyvdjeugz_VURwdI0jw5bSn52ne5jPOJZN-G0Rza4zdi_uZIK_ReEDgkLLnINteyC8RVZVKwIrKuHPSnUEVwHwOVbyrBZ7tgsRk6QecsFNportiqqNGjFEghJ88n8Y-w5VB-oIjrAufaM20sjQfWsZVW254UUFq-FahLFUTD0BT_v5LmDSkbQYtJauos-1y5L4yofRbElFGt9wHeY8PvbMN4W0OmlWp5WSwFIxTMvC6CvGI8j73NTyPFMuNgvkS-zd8RDgalK6h7xVD_CIc2bVclIxU5ey4OaOQuSUxnPm6jibtdLHPLy1KpvvN6-oolGZd3Uq9GKvlkjUm5PTs",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "perPage",
+										"value": "12",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{server}}/api/admin/get_users?status=pending",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"get_users"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending",
+											"description": "nullable : pending , accepted , rejected"
+										},
+										{
+											"key": "from_date",
+											"value": "2025-09-06",
+											"description": "nullable ",
+											"disabled": true
+										},
+										{
+											"key": "to_date",
+											"value": "2025-09-06",
+											"description": "required if from date is exist and = or > from from_date",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Password",
+					"item": [
+						{
+							"name": "Change Password Reset Status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmMwOWI2NGE5ZDQ3MjAzOWJmYjkwZDg2ZDM4ZWI4ZGQ1ODVhMWZmMzQwNDA3ZjEwOGM5NTg4NGNkNjBlYzZjOWY1MmZiYjk0NDNlZDFlMTEiLCJpYXQiOjE3NTcxNjc5MzMuNzY3MTc3LCJuYmYiOjE3NTcxNjc5MzMuNzY3MTgxLCJleHAiOjE3NTgwMzE5MzMuNzU3NDQxLCJzdWIiOiIxIiwic2NvcGVzIjpbIkFkbWluIl19.qksrUFg7Dh0VGSzl28qz89kWht8CqwtZOh59vbdEMXsNc8DSuTw-_AUU7oz2-4p0zRJyUSa0fHniqKVLkQ_h7x7H0mLpEGp9XZe6ZMGLPJ8dBNW10wwWb-Zc_PPUhYfwjVU76Y2UCx4QhPZ1RjGEzMRPJHWG_A3gkKIyM_tklol7bXt0YTq4UDO19EA3hQpSJAxi-0UuLU78SzyNyFnp1MYVdJ4d2kbhWJ6IQJwkJSU6F1eMYwXtAWgVneU9VsVi79IQ75GMDmD_M1p5jDZV2C4ro5DHSAut4rMDl4eJNoT_VCgR1IYK_R2hL4Tqlbdz8rsVxq0JaooIGxiyli4k1MZR8So7sVx0uO9UYBGtX6fGthELr6JJM8ujJObjeMuXPRaBr6fyzuL0yOP2BKAsPoifwyx4L99C6HTXlm4vj7eb1EJX0ia32bVUHD90PlkEz8Dsh4SvMIOnVhkcbYsBPnFRQ8DChzf5XCcoRT3a8Uml61BFs_voCNfVUHQPvIUszz9EjVgxtax2SKs6-xqfeBVgPMVwxY5AJe7TYoH5o4zC2ty7VEAzvibADtmqe5b0vRLcLEe2ZVy65ntuv-nICv4gV46kUewhUgThvYxdGOd-3aUtFQW41eAYEj76ZWD8jtvfprami0EXO7iYH8Ix6DJJzM_2yhhW4LbQ0BB6Onk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password_reset_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "accepted",
+											"description": "accepted , rejected",
+											"type": "text"
+										},
+										{
+											"key": "reason",
+											"value": "no action ",
+											"description": "reason required when status is rejected",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/admin/change_password_reset_status",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"change_password_reset_status"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Password Resets",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmMwOWI2NGE5ZDQ3MjAzOWJmYjkwZDg2ZDM4ZWI4ZGQ1ODVhMWZmMzQwNDA3ZjEwOGM5NTg4NGNkNjBlYzZjOWY1MmZiYjk0NDNlZDFlMTEiLCJpYXQiOjE3NTcxNjc5MzMuNzY3MTc3LCJuYmYiOjE3NTcxNjc5MzMuNzY3MTgxLCJleHAiOjE3NTgwMzE5MzMuNzU3NDQxLCJzdWIiOiIxIiwic2NvcGVzIjpbIkFkbWluIl19.qksrUFg7Dh0VGSzl28qz89kWht8CqwtZOh59vbdEMXsNc8DSuTw-_AUU7oz2-4p0zRJyUSa0fHniqKVLkQ_h7x7H0mLpEGp9XZe6ZMGLPJ8dBNW10wwWb-Zc_PPUhYfwjVU76Y2UCx4QhPZ1RjGEzMRPJHWG_A3gkKIyM_tklol7bXt0YTq4UDO19EA3hQpSJAxi-0UuLU78SzyNyFnp1MYVdJ4d2kbhWJ6IQJwkJSU6F1eMYwXtAWgVneU9VsVi79IQ75GMDmD_M1p5jDZV2C4ro5DHSAut4rMDl4eJNoT_VCgR1IYK_R2hL4Tqlbdz8rsVxq0JaooIGxiyli4k1MZR8So7sVx0uO9UYBGtX6fGthELr6JJM8ujJObjeMuXPRaBr6fyzuL0yOP2BKAsPoifwyx4L99C6HTXlm4vj7eb1EJX0ia32bVUHD90PlkEz8Dsh4SvMIOnVhkcbYsBPnFRQ8DChzf5XCcoRT3a8Uml61BFs_voCNfVUHQPvIUszz9EjVgxtax2SKs6-xqfeBVgPMVwxY5AJe7TYoH5o4zC2ty7VEAzvibADtmqe5b0vRLcLEe2ZVy65ntuv-nICv4gV46kUewhUgThvYxdGOd-3aUtFQW41eAYEj76ZWD8jtvfprami0EXO7iYH8Ix6DJJzM_2yhhW4LbQ0BB6Onk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "perPage",
+										"value": "12",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/api/admin/get_password_resets?status=accepted&from_date=2025-09-06&to_date=2025-09-06",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"admin",
+										"get_password_resets"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "accepted",
+											"description": "nullable : pending , accepted , rejected"
+										},
+										{
+											"key": "from_date",
+											"value": "2025-09-06",
+											"description": "nullable"
+										},
+										{
+											"key": "to_date",
+											"value": "2025-09-06",
+											"description": "required if from date is exist and = or > from from_date"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "user_name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "samiralkhawam605@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "+963936310551",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{server}}/api/user/register_request",
+									"host": [
+										"{{server}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"register_request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/login",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmE3MGIxNmQ2MjI0M2RlZWE5MzBiZTBiNGQ1Njc1NjQ0NWQ1ODU3MWIyYmFhZWI4NjAzNDBiMjIwNjY3YWVhYWRlOTA3ODYxZTNlZDVjYzciLCJpYXQiOjE3NTcyNjQ1NTQuOTEyNDAxLCJuYmYiOjE3NTcyNjQ1NTQuOTEyNDA0LCJleHAiOjE3NTgxMjg1NTQuOTAwMDM3LCJzdWIiOiIxIiwic2NvcGVzIjpbIkFkbWluIl19.MZTA0Xbt07Y8psKodwxEhr3NvELU99Zhjrg-FjLtNl0gBwjAHvGPphfPlpTUpjvyIkThQmic_xTea-pOu355EU-3uMuonD1SxgTXqk2ox060NNdWczgI0QnFjr7hRWOo_Zes009Kwa-FcaoEiXU6vLe4sVVTfPuadrgIBeAjARBAEENUyoli2iDZBLQvucRlGu13yyyKAF575hOdUpgpKobfZUDYaEzTLzxoqn8lSvCEgI2-Ki0fVgSG8KZvTOclMc096FxjQuQMWzK6o6A3DBA7fCwnzTqlY-VGz0ws1W9wrD9Cr9qbXHAwLPVeszasm-EMZkPSVrHs4lXskApK-21YK5jEiAn0ZfDyNo0i-v4wwXcHu9f65A_Ua09dj4x1Xuz4s8OuPqGSwR7-TRjh9in0ed2q-8Yrj_e3-Yx7qK2ktVLWczrkCk-SrSv_e7hsBXzRvhAglXplsvG1VHIlhhcjKJ5h7hlxJKOf_X-WpBrojfIGOq9lCpguqLZY20SYDgSTlRGsZxvPHiqM8OqxDG13DTDQvXc4ycL9C1ohbN_VSYxhdpd-1G7OMp4lpR-5hwqvqT11p-VzGMy1xdDdZUwbAYKssY3db-n_dV2C1NeQTCikM-800MfMiLXwOde4MkiWy4p2Dp5hKu7kP47fjRXetYLR5B4_ayTVb92u0SI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/api/user/logout",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Password",
+					"item": [
+						{
+							"name": "Password Reset",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "new_password",
+											"value": "password2",
+											"type": "text"
+										},
+										{
+											"key": "new_password_confirmation",
+											"value": "password2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/add_password_reset",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"add_password_reset"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Company",
+					"item": [
+						{
+							"name": "Add Company",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDJhYWU4NjRjOTI1MzNiNTIzMjRiZWU1NzA2NDc2OWYyYWRiMjA3Yzg5ODZkM2I0MTJiZDIwYjAzODI1MjE0YzQ5NmM2NjNjYTg0ZjM4YWYiLCJpYXQiOjE3NTczMTczNjYuODc2MjE5LCJuYmYiOjE3NTczMTczNjYuODc2MjIsImV4cCI6MTc1ODE4MTM2Ni44Njc3MjcsInN1YiI6IjEiLCJzY29wZXMiOlsiVXNlciJdfQ.s37tU0Z1ZCza_jKxbTQZyJzJmz4Cp-EAP-QsydinW8FU_GFsrGvuKsjXIQLJfYfWGrdMhHCHF7mf2iKifCODm7nGArakc1FWrXUruzBhLUq-efk3n1TAtrXGGb5ZERCkd51JsjoaSorF8cEavUtgoQKWl9SFG7FK99whSoMcOiUN6oBiIfovquDaCD26woQy_NkH1UOUbzc0qH3ZVviAzqLZbExLAIuJQndOEYOIulWbkbrUGh3qLktpLOzynIdjUgN4HUW-G97ZkztAIncAJg2GuGnPo-_mEOkIMUwXsZIJwxVVRg_MUH9Zu85k91gDKtF3kFV5MUbHE_8MKPlkFNLzJuIVT1hq0R-4DMCCdg6KREsYDjSQq-iBocE95j2n3yKSQCZjZDEXtJzCWQcx3XcgbqC9MyYRwHGQ3ogltPgBWMZxMxeU-Z0kSmpsvQvNUk_MwYJik8_p0WEUDXshoI3D3OR7DZCjo-djE2Q8Z7n-zpMMM1qBIN2qP_YwE_OsSq_DTcfXBU3J8FvCVUYE3HZ26UUyIOpJzttBXrhkReBdBMur1r3hm8FlNsDTZxzptAjye_JGpBsfNUnDmhWlj-V3HbKBnOfQYDYcoTrtzVP-7TCxegCF8vY9Wd1wP37jRpRdlRqf8TAhT2pt1WH5g3Di4lVuL75kQW231LpdzDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "company",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "company description",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "other",
+											"description": "required : transportation , other",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/add_company",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"add_company"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User Companies",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmE5NTAxZjIyNjlmMjczYTNmYzhiNjQ5M2FlMjY1ZGZlOTUzY2JmNjIwYThkOWI3MTE2MTdiNDhiYmFjNjIyNmFiZTU5NDQzY2I0ODRmYjQiLCJpYXQiOjE3NTcyNjgwMjMuOTE0MTcsIm5iZiI6MTc1NzI2ODAyMy45MTQxNzIsImV4cCI6MTc1ODEzMjAyMy45MDI3MjcsInN1YiI6IjIiLCJzY29wZXMiOlsiVXNlciJdfQ.GEOxdoOOBK6mgSOqRIYIqS4manUjTJTrgP7Zo3pEnMVk3xxN3Ylm8XR7EehwJgOnskUf-lOKcHBVAVHkZ0ZXTpchy9-p4RkxS4IGHLbDP8C1yWVpZMRU3e146eOqAK4r0GBZ454fBHztrmT09DHa9ivBZUK1SvDCOyd5FM3RJZO9iY_069Rm-v157OGnEajT69nE41HXArmxzT_9ZqjtyjGHH5Miy1R2kXoRuCTYxqbjdcKhiCWLhi2FC94_GYPpC_qBzyR8L_lsuWDrGCUmWT5ZIRPSURbaxbPk49TbJ2rxcQvsoiKDWKN-d7NyxJOWaRir-judYDoT6Ij2eX1_mQiUaHpclyReftOIXoECR__MJySXZV0rQQhwaJ5THqs68m-HSfiMq1Lx3XDmJAfvJjfl3rXLyhxmCKqG99rTS2YPd1tlAlmzBgpKI5oQEjNLsr2tqkn1wXlVoEfb0LXnIUlkSlQ45KVltFpsUS7QosaNPQa6pe6nrObCqw27y3-WO20WbXKQauS2wcNEPfAPYbVg3LZ1vXziYNb-F0afc_mxsF6p7rUc2CcsWVgzocw_M6UDb_BAWooENIFfqXeOebQPHs0twqPXbaKJa6EzEIwZZGuzL-tMkGxONtK0RJ8DEbldj2j6FG7xVGAspXb3riNXFfdjsiaVJ0ZP1JT5-t0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{local}}/api/user/get_user_companies",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"get_user_companies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Company",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODMwNDk1OGE2YjUxODQ0OGM0NmM3OTMzZDQ3NjY0MmVmZDBkNGQ4OTQ5ZTA0NjY1Y2ZiZjQ3NmEzMTY2NzhiYmQzZmFkMGFkNTExZDQ3NzkiLCJpYXQiOjE3NTcyNjg4NzkuNjQ5ODA0LCJuYmYiOjE3NTcyNjg4NzkuNjQ5ODA2LCJleHAiOjE3NTgxMzI4NzkuNjQzODc4LCJzdWIiOiIxIiwic2NvcGVzIjpbIlVzZXIiXX0.AD3nI9GTTex9yseG99Fv821OXqCKI6GitmuzUUeVj0hKHjbhBG05ursmBQo5hF1hS_o2_BwZNlJ55U71nAie_vkCjnGPa70sXFcRAabfbYtBq-LFFsG8Ywdkr5fGNdHaXhKYLjzUsbriRLVkaciNHLvputFbnllQusc7HTwwwODX_ZbYsWu8OY5z9cL9GNqKhnyHURrsv4LrtaJhyJFhR7Y0yftU_flQdcdQmpjOqO8GD9JPfPManEcVf0XmmUwciZfO9LR82NXyYHwyFMsC2QVqRU1sj2thGNDWVwHQUsuiFUss_dW8GN0eEVt0sWcfQCasfadjibQMBzStKwrr3rw6W-NM-k9bMIMc_lywjrC0ZwEoI67OHdPuRqt4pHjREQ-Mk952uuL6e3YPeB1jUfmiLVBY1sB7O28Ymz8ON0IUIuq5HR3f8il72n6K8kCkrHf4zt2XnbPH2YhD4yQ8kL-UK6-LAiRfEsT2wz2pi7zSsKaBRxyRR8K5JDJy8fEWDzV-6mHdHdhtbLGkor_yh3-wanCptDHRw8mEkvJLcIaJdWwuyW-okqYNe9XD4vjUr8pICY6yqQWKsg2rNOW-3fNgewf3EGhQyopP8ThVkZg84m6jKV17V7oqJuZQQ0ouY76oK9ZrAV2V-T4wli1CJIb_V2CjahUEq0-0hSrM1jM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{local}}/api/user/delete_company/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"delete_company",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Company",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDJhYWU4NjRjOTI1MzNiNTIzMjRiZWU1NzA2NDc2OWYyYWRiMjA3Yzg5ODZkM2I0MTJiZDIwYjAzODI1MjE0YzQ5NmM2NjNjYTg0ZjM4YWYiLCJpYXQiOjE3NTczMTczNjYuODc2MjE5LCJuYmYiOjE3NTczMTczNjYuODc2MjIsImV4cCI6MTc1ODE4MTM2Ni44Njc3MjcsInN1YiI6IjEiLCJzY29wZXMiOlsiVXNlciJdfQ.s37tU0Z1ZCza_jKxbTQZyJzJmz4Cp-EAP-QsydinW8FU_GFsrGvuKsjXIQLJfYfWGrdMhHCHF7mf2iKifCODm7nGArakc1FWrXUruzBhLUq-efk3n1TAtrXGGb5ZERCkd51JsjoaSorF8cEavUtgoQKWl9SFG7FK99whSoMcOiUN6oBiIfovquDaCD26woQy_NkH1UOUbzc0qH3ZVviAzqLZbExLAIuJQndOEYOIulWbkbrUGh3qLktpLOzynIdjUgN4HUW-G97ZkztAIncAJg2GuGnPo-_mEOkIMUwXsZIJwxVVRg_MUH9Zu85k91gDKtF3kFV5MUbHE_8MKPlkFNLzJuIVT1hq0R-4DMCCdg6KREsYDjSQq-iBocE95j2n3yKSQCZjZDEXtJzCWQcx3XcgbqC9MyYRwHGQ3ogltPgBWMZxMxeU-Z0kSmpsvQvNUk_MwYJik8_p0WEUDXshoI3D3OR7DZCjo-djE2Q8Z7n-zpMMM1qBIN2qP_YwE_OsSq_DTcfXBU3J8FvCVUYE3HZ26UUyIOpJzttBXrhkReBdBMur1r3hm8FlNsDTZxzptAjye_JGpBsfNUnDmhWlj-V3HbKBnOfQYDYcoTrtzVP-7TCxegCF8vY9Wd1wP37jRpRdlRqf8TAhT2pt1WH5g3Di4lVuL75kQW231LpdzDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "company",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "company description",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "other",
+											"description": "required : transportation , other",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/update_company/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"update_company",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Report",
+					"item": [
+						{
+							"name": "Get Company Summary",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODMwNDk1OGE2YjUxODQ0OGM0NmM3OTMzZDQ3NjY0MmVmZDBkNGQ4OTQ5ZTA0NjY1Y2ZiZjQ3NmEzMTY2NzhiYmQzZmFkMGFkNTExZDQ3NzkiLCJpYXQiOjE3NTcyNjg4NzkuNjQ5ODA0LCJuYmYiOjE3NTcyNjg4NzkuNjQ5ODA2LCJleHAiOjE3NTgxMzI4NzkuNjQzODc4LCJzdWIiOiIxIiwic2NvcGVzIjpbIlVzZXIiXX0.AD3nI9GTTex9yseG99Fv821OXqCKI6GitmuzUUeVj0hKHjbhBG05ursmBQo5hF1hS_o2_BwZNlJ55U71nAie_vkCjnGPa70sXFcRAabfbYtBq-LFFsG8Ywdkr5fGNdHaXhKYLjzUsbriRLVkaciNHLvputFbnllQusc7HTwwwODX_ZbYsWu8OY5z9cL9GNqKhnyHURrsv4LrtaJhyJFhR7Y0yftU_flQdcdQmpjOqO8GD9JPfPManEcVf0XmmUwciZfO9LR82NXyYHwyFMsC2QVqRU1sj2thGNDWVwHQUsuiFUss_dW8GN0eEVt0sWcfQCasfadjibQMBzStKwrr3rw6W-NM-k9bMIMc_lywjrC0ZwEoI67OHdPuRqt4pHjREQ-Mk952uuL6e3YPeB1jUfmiLVBY1sB7O28Ymz8ON0IUIuq5HR3f8il72n6K8kCkrHf4zt2XnbPH2YhD4yQ8kL-UK6-LAiRfEsT2wz2pi7zSsKaBRxyRR8K5JDJy8fEWDzV-6mHdHdhtbLGkor_yh3-wanCptDHRw8mEkvJLcIaJdWwuyW-okqYNe9XD4vjUr8pICY6yqQWKsg2rNOW-3fNgewf3EGhQyopP8ThVkZg84m6jKV17V7oqJuZQQ0ouY76oK9ZrAV2V-T4wli1CJIb_V2CjahUEq0-0hSrM1jM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/api/user/get_company_summary/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"get_company_summary",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Company fines",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDJhYWU4NjRjOTI1MzNiNTIzMjRiZWU1NzA2NDc2OWYyYWRiMjA3Yzg5ODZkM2I0MTJiZDIwYjAzODI1MjE0YzQ5NmM2NjNjYTg0ZjM4YWYiLCJpYXQiOjE3NTczMTczNjYuODc2MjE5LCJuYmYiOjE3NTczMTczNjYuODc2MjIsImV4cCI6MTc1ODE4MTM2Ni44Njc3MjcsInN1YiI6IjEiLCJzY29wZXMiOlsiVXNlciJdfQ.s37tU0Z1ZCza_jKxbTQZyJzJmz4Cp-EAP-QsydinW8FU_GFsrGvuKsjXIQLJfYfWGrdMhHCHF7mf2iKifCODm7nGArakc1FWrXUruzBhLUq-efk3n1TAtrXGGb5ZERCkd51JsjoaSorF8cEavUtgoQKWl9SFG7FK99whSoMcOiUN6oBiIfovquDaCD26woQy_NkH1UOUbzc0qH3ZVviAzqLZbExLAIuJQndOEYOIulWbkbrUGh3qLktpLOzynIdjUgN4HUW-G97ZkztAIncAJg2GuGnPo-_mEOkIMUwXsZIJwxVVRg_MUH9Zu85k91gDKtF3kFV5MUbHE_8MKPlkFNLzJuIVT1hq0R-4DMCCdg6KREsYDjSQq-iBocE95j2n3yKSQCZjZDEXtJzCWQcx3XcgbqC9MyYRwHGQ3ogltPgBWMZxMxeU-Z0kSmpsvQvNUk_MwYJik8_p0WEUDXshoI3D3OR7DZCjo-djE2Q8Z7n-zpMMM1qBIN2qP_YwE_OsSq_DTcfXBU3J8FvCVUYE3HZ26UUyIOpJzttBXrhkReBdBMur1r3hm8FlNsDTZxzptAjye_JGpBsfNUnDmhWlj-V3HbKBnOfQYDYcoTrtzVP-7TCxegCF8vY9Wd1wP37jRpRdlRqf8TAhT2pt1WH5g3Di4lVuL75kQW231LpdzDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "perPage",
+										"value": "15",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/api/user/get_company_fines/3?driver=sa&car=45&from_date=2025-10-04&to_date=2025-10-05",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"get_company_fines",
+										"3"
+									],
+									"query": [
+										{
+											"key": "driver",
+											"value": "sa",
+											"description": "nullable"
+										},
+										{
+											"key": "car",
+											"value": "45",
+											"description": "nullable"
+										},
+										{
+											"key": "from_date",
+											"value": "2025-10-04",
+											"description": "nullable"
+										},
+										{
+											"key": "to_date",
+											"value": "2025-10-05",
+											"description": "required if from date is exist and = or > from from_date"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Company Transactions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDJhYWU4NjRjOTI1MzNiNTIzMjRiZWU1NzA2NDc2OWYyYWRiMjA3Yzg5ODZkM2I0MTJiZDIwYjAzODI1MjE0YzQ5NmM2NjNjYTg0ZjM4YWYiLCJpYXQiOjE3NTczMTczNjYuODc2MjE5LCJuYmYiOjE3NTczMTczNjYuODc2MjIsImV4cCI6MTc1ODE4MTM2Ni44Njc3MjcsInN1YiI6IjEiLCJzY29wZXMiOlsiVXNlciJdfQ.s37tU0Z1ZCza_jKxbTQZyJzJmz4Cp-EAP-QsydinW8FU_GFsrGvuKsjXIQLJfYfWGrdMhHCHF7mf2iKifCODm7nGArakc1FWrXUruzBhLUq-efk3n1TAtrXGGb5ZERCkd51JsjoaSorF8cEavUtgoQKWl9SFG7FK99whSoMcOiUN6oBiIfovquDaCD26woQy_NkH1UOUbzc0qH3ZVviAzqLZbExLAIuJQndOEYOIulWbkbrUGh3qLktpLOzynIdjUgN4HUW-G97ZkztAIncAJg2GuGnPo-_mEOkIMUwXsZIJwxVVRg_MUH9Zu85k91gDKtF3kFV5MUbHE_8MKPlkFNLzJuIVT1hq0R-4DMCCdg6KREsYDjSQq-iBocE95j2n3yKSQCZjZDEXtJzCWQcx3XcgbqC9MyYRwHGQ3ogltPgBWMZxMxeU-Z0kSmpsvQvNUk_MwYJik8_p0WEUDXshoI3D3OR7DZCjo-djE2Q8Z7n-zpMMM1qBIN2qP_YwE_OsSq_DTcfXBU3J8FvCVUYE3HZ26UUyIOpJzttBXrhkReBdBMur1r3hm8FlNsDTZxzptAjye_JGpBsfNUnDmhWlj-V3HbKBnOfQYDYcoTrtzVP-7TCxegCF8vY9Wd1wP37jRpRdlRqf8TAhT2pt1WH5g3Di4lVuL75kQW231LpdzDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "perPage",
+										"value": "15",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/api/user/get_company_transactions/3?fields=id,transaction_type,attachment&type=out&transactionId=14&customer_name=car&from_date=2025-10-05&to_date=2025-10-05",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"get_company_transactions",
+										"3"
+									],
+									"query": [
+										{
+											"key": "fields",
+											"value": "id,transaction_type,attachment",
+											"description": "required"
+										},
+										{
+											"key": "type",
+											"value": "out",
+											"description": "nullable : in , out"
+										},
+										{
+											"key": "transactionId",
+											"value": "14",
+											"description": "nullable"
+										},
+										{
+											"key": "customer_name",
+											"value": "car",
+											"description": "nullable"
+										},
+										{
+											"key": "from_date",
+											"value": "2025-10-05",
+											"description": "nullable"
+										},
+										{
+											"key": "to_date",
+											"value": "2025-10-05",
+											"description": "required if from date is exist and = or > from from_date"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Transaction",
+					"item": [
+						{
+							"name": "Add Transaction",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODMwNDk1OGE2YjUxODQ0OGM0NmM3OTMzZDQ3NjY0MmVmZDBkNGQ4OTQ5ZTA0NjY1Y2ZiZjQ3NmEzMTY2NzhiYmQzZmFkMGFkNTExZDQ3NzkiLCJpYXQiOjE3NTcyNjg4NzkuNjQ5ODA0LCJuYmYiOjE3NTcyNjg4NzkuNjQ5ODA2LCJleHAiOjE3NTgxMzI4NzkuNjQzODc4LCJzdWIiOiIxIiwic2NvcGVzIjpbIlVzZXIiXX0.AD3nI9GTTex9yseG99Fv821OXqCKI6GitmuzUUeVj0hKHjbhBG05ursmBQo5hF1hS_o2_BwZNlJ55U71nAie_vkCjnGPa70sXFcRAabfbYtBq-LFFsG8Ywdkr5fGNdHaXhKYLjzUsbriRLVkaciNHLvputFbnllQusc7HTwwwODX_ZbYsWu8OY5z9cL9GNqKhnyHURrsv4LrtaJhyJFhR7Y0yftU_flQdcdQmpjOqO8GD9JPfPManEcVf0XmmUwciZfO9LR82NXyYHwyFMsC2QVqRU1sj2thGNDWVwHQUsuiFUss_dW8GN0eEVt0sWcfQCasfadjibQMBzStKwrr3rw6W-NM-k9bMIMc_lywjrC0ZwEoI67OHdPuRqt4pHjREQ-Mk952uuL6e3YPeB1jUfmiLVBY1sB7O28Ymz8ON0IUIuq5HR3f8il72n6K8kCkrHf4zt2XnbPH2YhD4yQ8kL-UK6-LAiRfEsT2wz2pi7zSsKaBRxyRR8K5JDJy8fEWDzV-6mHdHdhtbLGkor_yh3-wanCptDHRw8mEkvJLcIaJdWwuyW-okqYNe9XD4vjUr8pICY6yqQWKsg2rNOW-3fNgewf3EGhQyopP8ThVkZg84m6jKV17V7oqJuZQQ0ouY76oK9ZrAV2V-T4wli1CJIb_V2CjahUEq0-0hSrM1jM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "company_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "transaction_type",
+											"value": "out",
+											"description": "required : in , out",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "25000",
+											"type": "text"
+										},
+										{
+											"key": "customer_name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "transaction_date",
+											"value": "2025-06-25",
+											"type": "text"
+										},
+										{
+											"key": "transaction_description",
+											"value": "transaction description",
+											"type": "text"
+										},
+										{
+											"key": "attachment",
+											"description": "nullable",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/media for test projects/test.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/add_transaction",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"add_transaction"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Transaction",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODMwNDk1OGE2YjUxODQ0OGM0NmM3OTMzZDQ3NjY0MmVmZDBkNGQ4OTQ5ZTA0NjY1Y2ZiZjQ3NmEzMTY2NzhiYmQzZmFkMGFkNTExZDQ3NzkiLCJpYXQiOjE3NTcyNjg4NzkuNjQ5ODA0LCJuYmYiOjE3NTcyNjg4NzkuNjQ5ODA2LCJleHAiOjE3NTgxMzI4NzkuNjQzODc4LCJzdWIiOiIxIiwic2NvcGVzIjpbIlVzZXIiXX0.AD3nI9GTTex9yseG99Fv821OXqCKI6GitmuzUUeVj0hKHjbhBG05ursmBQo5hF1hS_o2_BwZNlJ55U71nAie_vkCjnGPa70sXFcRAabfbYtBq-LFFsG8Ywdkr5fGNdHaXhKYLjzUsbriRLVkaciNHLvputFbnllQusc7HTwwwODX_ZbYsWu8OY5z9cL9GNqKhnyHURrsv4LrtaJhyJFhR7Y0yftU_flQdcdQmpjOqO8GD9JPfPManEcVf0XmmUwciZfO9LR82NXyYHwyFMsC2QVqRU1sj2thGNDWVwHQUsuiFUss_dW8GN0eEVt0sWcfQCasfadjibQMBzStKwrr3rw6W-NM-k9bMIMc_lywjrC0ZwEoI67OHdPuRqt4pHjREQ-Mk952uuL6e3YPeB1jUfmiLVBY1sB7O28Ymz8ON0IUIuq5HR3f8il72n6K8kCkrHf4zt2XnbPH2YhD4yQ8kL-UK6-LAiRfEsT2wz2pi7zSsKaBRxyRR8K5JDJy8fEWDzV-6mHdHdhtbLGkor_yh3-wanCptDHRw8mEkvJLcIaJdWwuyW-okqYNe9XD4vjUr8pICY6yqQWKsg2rNOW-3fNgewf3EGhQyopP8ThVkZg84m6jKV17V7oqJuZQQ0ouY76oK9ZrAV2V-T4wli1CJIb_V2CjahUEq0-0hSrM1jM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "amount",
+											"value": "2200000",
+											"type": "text"
+										},
+										{
+											"key": "customer_name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "transaction_date",
+											"value": "2025-07-25",
+											"type": "text"
+										},
+										{
+											"key": "transaction_description",
+											"value": "transaction description",
+											"type": "text"
+										},
+										{
+											"key": "attachment",
+											"description": "nullable",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/media for test projects/test.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/update_transaction/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"update_transaction",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Tramsaction",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODMwNDk1OGE2YjUxODQ0OGM0NmM3OTMzZDQ3NjY0MmVmZDBkNGQ4OTQ5ZTA0NjY1Y2ZiZjQ3NmEzMTY2NzhiYmQzZmFkMGFkNTExZDQ3NzkiLCJpYXQiOjE3NTcyNjg4NzkuNjQ5ODA0LCJuYmYiOjE3NTcyNjg4NzkuNjQ5ODA2LCJleHAiOjE3NTgxMzI4NzkuNjQzODc4LCJzdWIiOiIxIiwic2NvcGVzIjpbIlVzZXIiXX0.AD3nI9GTTex9yseG99Fv821OXqCKI6GitmuzUUeVj0hKHjbhBG05ursmBQo5hF1hS_o2_BwZNlJ55U71nAie_vkCjnGPa70sXFcRAabfbYtBq-LFFsG8Ywdkr5fGNdHaXhKYLjzUsbriRLVkaciNHLvputFbnllQusc7HTwwwODX_ZbYsWu8OY5z9cL9GNqKhnyHURrsv4LrtaJhyJFhR7Y0yftU_flQdcdQmpjOqO8GD9JPfPManEcVf0XmmUwciZfO9LR82NXyYHwyFMsC2QVqRU1sj2thGNDWVwHQUsuiFUss_dW8GN0eEVt0sWcfQCasfadjibQMBzStKwrr3rw6W-NM-k9bMIMc_lywjrC0ZwEoI67OHdPuRqt4pHjREQ-Mk952uuL6e3YPeB1jUfmiLVBY1sB7O28Ymz8ON0IUIuq5HR3f8il72n6K8kCkrHf4zt2XnbPH2YhD4yQ8kL-UK6-LAiRfEsT2wz2pi7zSsKaBRxyRR8K5JDJy8fEWDzV-6mHdHdhtbLGkor_yh3-wanCptDHRw8mEkvJLcIaJdWwuyW-okqYNe9XD4vjUr8pICY6yqQWKsg2rNOW-3fNgewf3EGhQyopP8ThVkZg84m6jKV17V7oqJuZQQ0ouY76oK9ZrAV2V-T4wli1CJIb_V2CjahUEq0-0hSrM1jM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "company_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "transaction_type",
+											"value": "out",
+											"description": "required : in , out",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "25000",
+											"type": "text"
+										},
+										{
+											"key": "customer_name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "transaction_date",
+											"value": "2025-06-25",
+											"type": "text"
+										},
+										{
+											"key": "transaction_description",
+											"value": "transaction description",
+											"type": "text"
+										},
+										{
+											"key": "attachment",
+											"type": "file",
+											"src": "/C:/Users/samir/Desktop/media for test projects/test.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/delete_transaction/10",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"delete_transaction",
+										"10"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Fine",
+					"item": [
+						{
+							"name": "Add Fine",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDJhYWU4NjRjOTI1MzNiNTIzMjRiZWU1NzA2NDc2OWYyYWRiMjA3Yzg5ODZkM2I0MTJiZDIwYjAzODI1MjE0YzQ5NmM2NjNjYTg0ZjM4YWYiLCJpYXQiOjE3NTczMTczNjYuODc2MjE5LCJuYmYiOjE3NTczMTczNjYuODc2MjIsImV4cCI6MTc1ODE4MTM2Ni44Njc3MjcsInN1YiI6IjEiLCJzY29wZXMiOlsiVXNlciJdfQ.s37tU0Z1ZCza_jKxbTQZyJzJmz4Cp-EAP-QsydinW8FU_GFsrGvuKsjXIQLJfYfWGrdMhHCHF7mf2iKifCODm7nGArakc1FWrXUruzBhLUq-efk3n1TAtrXGGb5ZERCkd51JsjoaSorF8cEavUtgoQKWl9SFG7FK99whSoMcOiUN6oBiIfovquDaCD26woQy_NkH1UOUbzc0qH3ZVviAzqLZbExLAIuJQndOEYOIulWbkbrUGh3qLktpLOzynIdjUgN4HUW-G97ZkztAIncAJg2GuGnPo-_mEOkIMUwXsZIJwxVVRg_MUH9Zu85k91gDKtF3kFV5MUbHE_8MKPlkFNLzJuIVT1hq0R-4DMCCdg6KREsYDjSQq-iBocE95j2n3yKSQCZjZDEXtJzCWQcx3XcgbqC9MyYRwHGQ3ogltPgBWMZxMxeU-Z0kSmpsvQvNUk_MwYJik8_p0WEUDXshoI3D3OR7DZCjo-djE2Q8Z7n-zpMMM1qBIN2qP_YwE_OsSq_DTcfXBU3J8FvCVUYE3HZ26UUyIOpJzttBXrhkReBdBMur1r3hm8FlNsDTZxzptAjye_JGpBsfNUnDmhWlj-V3HbKBnOfQYDYcoTrtzVP-7TCxegCF8vY9Wd1wP37jRpRdlRqf8TAhT2pt1WH5g3Di4lVuL75kQW231LpdzDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "company_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "driver_name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "car_number",
+											"value": "4522522",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "5000",
+											"type": "text"
+										},
+										{
+											"key": "fine_date",
+											"value": "2025-05-05",
+											"type": "text"
+										},
+										{
+											"key": "side",
+											"value": "right",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/add_fine",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"add_fine"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Fine",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODMwNDk1OGE2YjUxODQ0OGM0NmM3OTMzZDQ3NjY0MmVmZDBkNGQ4OTQ5ZTA0NjY1Y2ZiZjQ3NmEzMTY2NzhiYmQzZmFkMGFkNTExZDQ3NzkiLCJpYXQiOjE3NTcyNjg4NzkuNjQ5ODA0LCJuYmYiOjE3NTcyNjg4NzkuNjQ5ODA2LCJleHAiOjE3NTgxMzI4NzkuNjQzODc4LCJzdWIiOiIxIiwic2NvcGVzIjpbIlVzZXIiXX0.AD3nI9GTTex9yseG99Fv821OXqCKI6GitmuzUUeVj0hKHjbhBG05ursmBQo5hF1hS_o2_BwZNlJ55U71nAie_vkCjnGPa70sXFcRAabfbYtBq-LFFsG8Ywdkr5fGNdHaXhKYLjzUsbriRLVkaciNHLvputFbnllQusc7HTwwwODX_ZbYsWu8OY5z9cL9GNqKhnyHURrsv4LrtaJhyJFhR7Y0yftU_flQdcdQmpjOqO8GD9JPfPManEcVf0XmmUwciZfO9LR82NXyYHwyFMsC2QVqRU1sj2thGNDWVwHQUsuiFUss_dW8GN0eEVt0sWcfQCasfadjibQMBzStKwrr3rw6W-NM-k9bMIMc_lywjrC0ZwEoI67OHdPuRqt4pHjREQ-Mk952uuL6e3YPeB1jUfmiLVBY1sB7O28Ymz8ON0IUIuq5HR3f8il72n6K8kCkrHf4zt2XnbPH2YhD4yQ8kL-UK6-LAiRfEsT2wz2pi7zSsKaBRxyRR8K5JDJy8fEWDzV-6mHdHdhtbLGkor_yh3-wanCptDHRw8mEkvJLcIaJdWwuyW-okqYNe9XD4vjUr8pICY6yqQWKsg2rNOW-3fNgewf3EGhQyopP8ThVkZg84m6jKV17V7oqJuZQQ0ouY76oK9ZrAV2V-T4wli1CJIb_V2CjahUEq0-0hSrM1jM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "company_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "driver_name",
+											"value": "samir",
+											"type": "text"
+										},
+										{
+											"key": "car_number",
+											"value": "4522522",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "5000",
+											"type": "text"
+										},
+										{
+											"key": "fine_date",
+											"value": "2025-05-05",
+											"type": "text"
+										},
+										{
+											"key": "side",
+											"value": "right",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/delete_fine/6",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"delete_fine",
+										"6"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Fine",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDJhYWU4NjRjOTI1MzNiNTIzMjRiZWU1NzA2NDc2OWYyYWRiMjA3Yzg5ODZkM2I0MTJiZDIwYjAzODI1MjE0YzQ5NmM2NjNjYTg0ZjM4YWYiLCJpYXQiOjE3NTczMTczNjYuODc2MjE5LCJuYmYiOjE3NTczMTczNjYuODc2MjIsImV4cCI6MTc1ODE4MTM2Ni44Njc3MjcsInN1YiI6IjEiLCJzY29wZXMiOlsiVXNlciJdfQ.s37tU0Z1ZCza_jKxbTQZyJzJmz4Cp-EAP-QsydinW8FU_GFsrGvuKsjXIQLJfYfWGrdMhHCHF7mf2iKifCODm7nGArakc1FWrXUruzBhLUq-efk3n1TAtrXGGb5ZERCkd51JsjoaSorF8cEavUtgoQKWl9SFG7FK99whSoMcOiUN6oBiIfovquDaCD26woQy_NkH1UOUbzc0qH3ZVviAzqLZbExLAIuJQndOEYOIulWbkbrUGh3qLktpLOzynIdjUgN4HUW-G97ZkztAIncAJg2GuGnPo-_mEOkIMUwXsZIJwxVVRg_MUH9Zu85k91gDKtF3kFV5MUbHE_8MKPlkFNLzJuIVT1hq0R-4DMCCdg6KREsYDjSQq-iBocE95j2n3yKSQCZjZDEXtJzCWQcx3XcgbqC9MyYRwHGQ3ogltPgBWMZxMxeU-Z0kSmpsvQvNUk_MwYJik8_p0WEUDXshoI3D3OR7DZCjo-djE2Q8Z7n-zpMMM1qBIN2qP_YwE_OsSq_DTcfXBU3J8FvCVUYE3HZ26UUyIOpJzttBXrhkReBdBMur1r3hm8FlNsDTZxzptAjye_JGpBsfNUnDmhWlj-V3HbKBnOfQYDYcoTrtzVP-7TCxegCF8vY9Wd1wP37jRpRdlRqf8TAhT2pt1WH5g3Di4lVuL75kQW231LpdzDA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "driver_name",
+											"value": "samir kh",
+											"type": "text"
+										},
+										{
+											"key": "car_number",
+											"value": "4522525",
+											"type": "text"
+										},
+										{
+											"key": "amount",
+											"value": "2500",
+											"type": "text"
+										},
+										{
+											"key": "fine_date",
+											"value": "2025-10-05",
+											"type": "text"
+										},
+										{
+											"key": "side",
+											"value": "left",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/api/user/update_fine/7",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"update_fine",
+										"7"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
