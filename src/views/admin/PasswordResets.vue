@@ -25,7 +25,7 @@
                   v-model="filters.status"
                   :label="$t('admin.reset_status')"
                   :items="statusOptions"
-                  @update:model-value="loadPasswordResets"
+                  @update:model-value="() => loadPasswordResets(1)"
                 ></v-select>
               </v-col>
               <v-col cols="12" md="3">
@@ -33,7 +33,7 @@
                   v-model="filters.from_date"
                   :label="$t('admin.from_date')"
                   type="date"
-                  @update:model-value="loadPasswordResets"
+                  @update:model-value="() => loadPasswordResets(1)"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="3">
@@ -41,7 +41,7 @@
                   v-model="filters.to_date"
                   :label="$t('admin.to_date')"
                   type="date"
-                  @update:model-value="loadPasswordResets"
+                  @update:model-value="() => loadPasswordResets(1)"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="3">
@@ -49,8 +49,21 @@
                   v-model="filters.search"
                   :label="$t('common.search')"
                   prepend-inner-icon="mdi-magnify"
-                  @update:model-value="loadPasswordResets"
+                  @update:model-value="() => loadPasswordResets(1)"
                 ></v-text-field>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12" class="d-flex justify-end">
+                <v-btn
+                  color="grey"
+                  variant="outlined"
+                  @click="resetFilters"
+                  :disabled="loading"
+                >
+                  <v-icon class="me-2">mdi-refresh</v-icon>
+                  {{ $t('common.reset_filters') }}
+                </v-btn>
               </v-col>
             </v-row>
           </v-card-text>
@@ -128,6 +141,11 @@
               :items="passwordResets"
               :loading="loading"
               class="elevation-1"
+              :items-per-page="pagination.per_page"
+              :page="pagination.current_page"
+              hide-default-footer
+              :no-data-text="$t('common.no_data_available')"
+              :loading-text="$t('common.loading')"
             >
               <template v-slot:item.status="{ item }">
                 <v-chip :color="getStatusColor(item.status)" size="small">
@@ -166,6 +184,63 @@
                 </v-btn>
               </template>
             </v-data-table>
+
+            <!-- Pagination Controls -->
+            <v-row class="mt-4" v-if="pagination.last_page > 1">
+              <v-col cols="12" md="6">
+                <div class="d-flex align-center">
+                  <span class="text-body-2 me-4">
+                    {{ $t('common.showing') }} {{ ((pagination.current_page - 1) * pagination.per_page) + 1 }} 
+                    {{ $t('common.to') }} {{ Math.min(pagination.current_page * pagination.per_page, pagination.total) }} 
+                    {{ $t('common.of') }} {{ pagination.total }} {{ $t('common.results') }}
+                  </span>
+                  <v-select
+                    :model-value="pagination.per_page"
+                    :items="[12, 25, 50, 100]"
+                    @update:model-value="changePerPage"
+                    density="compact"
+                    variant="outlined"
+                    hide-details
+                    style="max-width: 80px;"
+                  ></v-select>
+                  <span class="text-body-2 ms-2">{{ $t('common.per_page') }}</span>
+                </div>
+              </v-col>
+              <v-col cols="12" md="6">
+                <div class="d-flex justify-end align-center">
+                  <v-btn
+                    :disabled="pagination.current_page <= 1"
+                    @click="prevPage"
+                    variant="outlined"
+                    size="small"
+                    class="me-2"
+                  >
+                    <v-icon>mdi-chevron-left</v-icon>
+                    {{ $t('common.previous') }}
+                  </v-btn>
+                  
+                  <v-pagination
+                    :model-value="pagination.current_page"
+                    :length="pagination.last_page"
+                    @update:model-value="goToPage"
+                    :total-visible="5"
+                    size="small"
+                    class="mx-2"
+                  ></v-pagination>
+                  
+                  <v-btn
+                    :disabled="pagination.current_page >= pagination.last_page"
+                    @click="nextPage"
+                    variant="outlined"
+                    size="small"
+                    class="ms-2"
+                  >
+                    {{ $t('common.next') }}
+                    <v-icon>mdi-chevron-right</v-icon>
+                  </v-btn>
+                </div>
+              </v-col>
+            </v-row>
           </v-card-text>
         </v-card>
       </v-col>
@@ -270,6 +345,17 @@
       </v-card>
     </v-dialog>
 
+    <!-- Error Alert -->
+    <v-alert
+      v-if="adminStore.error"
+      type="error"
+      class="mb-4"
+      closable
+      @click:close="adminStore.clearError"
+    >
+      {{ adminStore.error }}
+    </v-alert>
+
     <!-- Loading Overlay -->
     <v-overlay v-model="loading" class="align-center justify-center">
       <v-progress-circular
@@ -293,7 +379,6 @@ export default {
     const adminStore = useAdminStore()
 
     const loading = ref(false)
-    const passwordResets = ref([])
     const showViewModal = ref(false)
     const showActionModal = ref(false)
     const selectedReset = ref({})
@@ -304,7 +389,9 @@ export default {
       status: '',
       from_date: '',
       to_date: '',
-      search: ''
+      search: '',
+      page: 1,
+      per_page: 12
     })
 
     const actionForm = reactive({
@@ -326,23 +413,45 @@ export default {
       { title: t('common.actions'), key: 'actions', sortable: false }
     ]
 
-    // Statistics
-    const totalResets = computed(() => passwordResets.value.length)
-    const approvedResets = computed(() => passwordResets.value.filter(reset => reset.status === 'approved').length)
-    const pendingResets = computed(() => passwordResets.value.filter(reset => reset.status === 'pending').length)
-    const rejectedResets = computed(() => passwordResets.value.filter(reset => reset.status === 'rejected').length)
+    // Statistics - using data from store
+    const totalResets = computed(() => adminStore.passwordResets.statistics.total)
+    const approvedResets = computed(() => adminStore.passwordResets.statistics.approved)
+    const pendingResets = computed(() => adminStore.passwordResets.statistics.pending)
+    const rejectedResets = computed(() => adminStore.passwordResets.statistics.rejected)
+
+    // Pagination data from store
+    const passwordResets = computed(() => adminStore.passwordResets.data)
+    const pagination = computed(() => adminStore.passwordResets.pagination)
 
     // Load password resets
-    const loadPasswordResets = async () => {
+    const loadPasswordResets = async (page = 1) => {
       loading.value = true
       try {
-        const params = {
-          ...filters,
-          perPage: 50
+        // Reset to page 1 when filters change
+        if (page === 1) {
+          filters.page = 1
         }
-        const result = await adminStore.getPasswordResets(params)
+        
+        const params = {
+          status: filters.status || undefined,
+          from_date: filters.from_date || undefined,
+          to_date: filters.to_date || undefined,
+          search: filters.search || undefined,
+          page: page,
+          per_page: filters.per_page
+        }
+
+        // Remove undefined values
+        Object.keys(params).forEach(key => {
+          if (params[key] === undefined) {
+            delete params[key]
+          }
+        })
+
+        const result = await adminStore.getPasswordResetsWithFilters(params)
         if (result.success) {
-          passwordResets.value = adminStore.passwordResets
+          // Data is automatically updated in store
+          console.log('Password resets loaded successfully')
         }
       } catch (error) {
         console.error('Error loading password resets:', error)
@@ -383,7 +492,11 @@ export default {
           actionForm.reason
         )
         if (result.success) {
-          passwordResets.value = adminStore.passwordResets
+          // Reload current page and statistics
+          await Promise.all([
+            loadPasswordResets(filters.page),
+            loadStatistics()
+          ])
           closeActionModal()
         }
       } catch (error) {
@@ -432,14 +545,59 @@ export default {
       return new Date(date).toLocaleDateString('ar-SY')
     }
 
+    // Pagination functions
+    const goToPage = (page) => {
+      loadPasswordResets(page)
+    }
+
+    const nextPage = () => {
+      if (pagination.value.current_page < pagination.value.last_page) {
+        goToPage(pagination.value.current_page + 1)
+      }
+    }
+
+    const prevPage = () => {
+      if (pagination.value.current_page > 1) {
+        goToPage(pagination.value.current_page - 1)
+      }
+    }
+
+    const changePerPage = (newPerPage) => {
+      filters.per_page = newPerPage
+      filters.page = 1
+      loadPasswordResets(1)
+    }
+
+    // Reset filters
+    const resetFilters = () => {
+      filters.status = ''
+      filters.from_date = ''
+      filters.to_date = ''
+      filters.search = ''
+      filters.page = 1
+      loadPasswordResets(1)
+    }
+
+    // Load statistics
+    const loadStatistics = async () => {
+      try {
+        await adminStore.getPasswordResetStatistics()
+      } catch (error) {
+        console.error('Error loading statistics:', error)
+      }
+    }
+
     // Load data on mount
     onMounted(() => {
+      loadStatistics()
       loadPasswordResets()
     })
 
     return {
+      adminStore,
       loading,
       passwordResets,
+      pagination,
       showViewModal,
       showActionModal,
       selectedReset,
@@ -462,7 +620,13 @@ export default {
       closeActionModal,
       getStatusColor,
       getStatusText,
-      formatDate
+      formatDate,
+      goToPage,
+      nextPage,
+      prevPage,
+      changePerPage,
+      loadStatistics,
+      resetFilters
     }
   }
 }
