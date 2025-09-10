@@ -8,5 +8,50 @@
 
   "site": {
     "welcome": "مرحبا"
+  },
+
+  "navigation": {
+    "password_resets": "طلبات إعادة تعيين كلمة المرور"
+  },
+
+  "admin": {
+    "manage_password_resets": "إدارة طلبات إعادة تعيين كلمة المرور",
+    "password_resets_list": "قائمة طلبات إعادة تعيين كلمة المرور",
+    "password_reset_details": "تفاصيل طلب إعادة تعيين كلمة المرور",
+    "reset_status": "حالة الطلب",
+    "reason": "السبب",
+    "approve_reset": "الموافقة على الطلب",
+    "reject_reset": "رفض الطلب",
+    "approve": "موافقة",
+    "reject": "رفض",
+    "total_resets": "إجمالي الطلبات",
+    "approved_resets": "الطلبات المعتمدة",
+    "pending_resets": "الطلبات المعلقة",
+    "rejected_resets": "الطلبات المرفوضة",
+    "all_statuses": "جميع الحالات",
+    "pending": "معلق",
+    "approved": "معتمد",
+    "rejected": "مرفوض"
+  },
+
+  "common": {
+    "search": "بحث",
+    "close": "إغلاق",
+    "cancel": "إلغاء",
+    "actions": "الإجراءات",
+    "created_at": "تاريخ الإنشاء",
+    "updated_at": "تاريخ التحديث",
+    "showing": "عرض",
+    "of": "من",
+    "items_per_page": "عدد العناصر في الصفحة",
+    "reset_filters": "إعادة تعيين المرشحات"
+  },
+
+  "login": {
+    "username": "اسم المستخدم"
+  },
+
+  "validation": {
+    "required": "هذا الحقل مطلوب"
   }
 }
