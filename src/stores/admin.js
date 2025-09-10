@@ -14,6 +14,21 @@ export const useAdminStore = defineStore('admin', {
       acceptedPasswordResets: 0,
       rejectedPasswordResets: 0
     },
+    passwordResets: {
+      data: [],
+      pagination: {
+        current_page: 1,
+        last_page: 1,
+        per_page: 12,
+        total: 0
+      },
+      statistics: {
+        total: 0,
+        pending: 0,
+        approved: 0,
+        rejected: 0
+      }
+    },
     loading: false,
     error: null
   }),
@@ -115,6 +130,25 @@ export const useAdminStore = defineStore('admin', {
         const { data } = response
 
         if (data.success) {
+          // Update password resets data
+          this.passwordResets.data = data.data || []
+          
+          // Update pagination info
+          this.passwordResets.pagination = {
+            current_page: data.current_page || 1,
+            last_page: data.last_page || 1,
+            per_page: data.per_page || 12,
+            total: data.total || 0
+          }
+
+          // Update statistics - these should come from the API response
+          this.passwordResets.statistics = {
+            total: data.total || 0,
+            pending: data.pending_count || 0,
+            approved: data.approved_count || 0,
+            rejected: data.rejected_count || 0
+          }
+
           return { success: true, data: data }
         } else {
           this.error = data.message || 'Failed to fetch password resets'
@@ -122,6 +156,72 @@ export const useAdminStore = defineStore('admin', {
         }
       } catch (error) {
         this.error = error.response?.data?.message || 'Failed to fetch password resets'
+        return { success: false, error: this.error }
+      } finally {
+        this.loading = false
+      }
+    },
+
+    // Get Password Reset Statistics Only
+    async getPasswordResetStatistics() {
+      this.loading = true
+      this.error = null
+
+      try {
+        const response = await passwordService.getPasswordResets({ perPage: 1 })
+        const { data } = response
+
+        if (data.success) {
+          // Update only statistics
+          this.passwordResets.statistics = {
+            total: data.total || 0,
+            pending: data.pending_count || 0,
+            approved: data.approved_count || 0,
+            rejected: data.rejected_count || 0
+          }
+
+          return { success: true, data: this.passwordResets.statistics }
+        } else {
+          this.error = data.message || 'Failed to fetch password reset statistics'
+          return { success: false, error: this.error }
+        }
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Failed to fetch password reset statistics'
+        return { success: false, error: this.error }
+      } finally {
+        this.loading = false
+      }
+    },
+
+    // Change Password Reset Status
+    async changePasswordResetStatus(passwordResetId, status, reason = '') {
+      this.loading = true
+      this.error = null
+
+      try {
+        const response = await passwordService.changePasswordResetStatus({
+          password_reset_id: passwordResetId,
+          status: status,
+          reason: reason
+        })
+        const { data } = response
+
+        if (data.success) {
+          // Update the specific item in the data array
+          const index = this.passwordResets.data.findIndex(item => item.id === passwordResetId)
+          if (index !== -1) {
+            this.passwordResets.data[index].status = status
+            this.passwordResets.data[index].reason = reason
+            this.passwordResets.data[index].updated_at = new Date().toISOString()
+          }
+          
+          return { success: true, data: data }
+        } else {
+          this.error = data.message || 'Failed to update password reset status'
+          return { success: false, error: this.error }
+        }
+      } catch (error) {
+        this.error = error.response?.data?.message || 'Failed to update password reset status'
         return { success: false, error: this.error }
       } finally {
         this.loading = false
@@ -262,6 +362,25 @@ export const useAdminStore = defineStore('admin', {
         pendingPasswordResets: 0,
         acceptedPasswordResets: 0,
         rejectedPasswordResets: 0
+      }
+    },
+
+    // Clear password resets data
+    clearPasswordResets() {
+      this.passwordResets = {
+        data: [],
+        pagination: {
+          current_page: 1,
+          last_page: 1,
+          per_page: 12,
+          total: 0
+        },
+        statistics: {
+          total: 0,
+          pending: 0,
+          approved: 0,
+          rejected: 0
+        }
       }
     }
   }

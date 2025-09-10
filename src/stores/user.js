@@ -12,6 +12,13 @@ export const useUserStore = defineStore('user', {
       last_page: 1,
       per_page: 12,
       total: 0
+    },
+    statistics: {
+      total: 0,
+      pending: 0,
+      accepted: 0,
+      rejected: 0,
+      blocked: 0
     }
   }),
 
@@ -41,6 +48,16 @@ export const useUserStore = defineStore('user', {
             per_page: data.per_page || 12,
             total: data.total || 0
           }
+          
+          // Update statistics
+          this.statistics = {
+            total: data.total || 0,
+            pending: data.pending_count || 0,
+            accepted: data.accepted_count || 0,
+            rejected: data.rejected_count || 0,
+            blocked: data.blocked_count || 0
+          }
+          
           return { success: true, data: data }
         } else {
           this.error = data.message || 'Failed to fetch users'
@@ -259,6 +276,13 @@ export const useUserStore = defineStore('user', {
         last_page: 1,
         per_page: 12,
         total: 0
+      }
+      this.statistics = {
+        total: 0,
+        pending: 0,
+        accepted: 0,
+        rejected: 0,
+        blocked: 0
       }
     }
   }
