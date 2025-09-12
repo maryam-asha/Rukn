@@ -8,5 +8,69 @@
 
   "site": {
     "welcome": "مرحبا"
+  },
+
+  "navigation": {
+    "password_resets": "طلبات إعادة تعيين كلمة المرور"
+  },
+
+  "admin": {
+    "manage_password_resets": "إدارة طلبات إعادة تعيين كلمة المرور",
+    "password_resets_list": "قائمة طلبات إعادة تعيين كلمة المرور",
+    "password_reset_details": "تفاصيل طلب إعادة تعيين كلمة المرور",
+    "reset_status": "حالة الطلب",
+    "reason": "السبب",
+    "approve_reset": "الموافقة على الطلب",
+    "reject_reset": "رفض الطلب",
+    "approve": "موافقة",
+    "reject": "رفض",
+    "total_resets": "إجمالي الطلبات",
+    "approved_resets": "الطلبات المعتمدة",
+    "pending_resets": "الطلبات المعلقة",
+    "rejected_resets": "الطلبات المرفوضة",
+    "all_statuses": "جميع الحالات",
+    "pending": "معلق",
+    "approved": "معتمد",
+    "rejected": "مرفوض"
+  },
+
+  "common": {
+    "search": "بحث",
+    "close": "إغلاق",
+    "cancel": "إلغاء",
+    "actions": "الإجراءات",
+    "created_at": "تاريخ الإنشاء",
+    "updated_at": "تاريخ التحديث",
+    "showing": "عرض",
+    "of": "من",
+    "items_per_page": "عدد العناصر في الصفحة",
+    "reset_filters": "إعادة تعيين المرشحات"
+  },
+
+  "login": {
+    "username": "اسم المستخدم"
+  },
+
+  "validation": {
+    "required": "هذا الحقل مطلوب"
+  },
+
+  "change_password": "تغيير كلمة المرور",
+  "username": "اسم المستخدم",
+  "new_password": "كلمة المرور الجديدة",
+  "new_password_confirmation": "تأكيد كلمة المرور الجديدة",
+  "send_request": "إرسال الطلب",
+  "sending": "جاري الإرسال...",
+  "login": "تسجيل الدخول",
+  "password_reset_success": "تم إرسال طلب تغيير كلمة المرور بنجاح",
+  "password_reset_failed": "فشل في إرسال طلب تغيير كلمة المرور",
+  "passwords_match": "كلمات المرور متطابقة",
+
+  "errors": {
+    "username_required": "اسم المستخدم مطلوب",
+    "password_required": "كلمة المرور مطلوبة",
+    "password_confirmation_required": "تأكيد كلمة المرور مطلوب",
+    "passwords_do_not_match": "كلمات المرور غير متطابقة",
+    "form_invalid": "يرجى التحقق من صحة البيانات المدخلة"
   }
 }
